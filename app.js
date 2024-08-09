@@ -30,7 +30,7 @@ mongoose.connect(dbUri)
 
 // Cấu hình chi tiết CORS
 const corsOptions = {
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5500', corsWeb],
+    origin: ['http://localhost:5173', 'http://127.0.0.1:5500', corsWeb].filter(Boolean),
     optionsSuccessStatus: 200,
 };   
 // HELLO 
