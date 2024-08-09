@@ -1,23 +1,39 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const config = require('./config');
 const userRoutes = require('./routes/user.routes');
-const productRoutes = require('./routes/product.routes')
-const categoryRoutes = require('./routes/category.routes')
 const cors = require('cors');   
-
+require('dotenv').config(); 
 const app = express();
 
-// Kết nối đến MongoDB
-mongoose.connect(config.db)
-    // .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.error('Could not connect to MongoDB', err));
+const dbUri = process.env.MONGODB_URI
+// const dbUri = process.env.MONGODB_URI  && 'mongodb://localhost:27017/passport';
+
+const port = process.env.PORT || 3001 
+const hostname = process.env.HOST_NAME || localhost; 
+const corsWeb = process.env.CORS_WEB
+// console.log(process.env);  
+
+
+require('dotenv').config(); 
+
+
+
+// Kết nối đến MongoDB 
+// mongoose.connect(dbUri )
+//     .catch(err => console.error('Could not connect to MongoDB', err));
+
+
+mongoose.connect(dbUri)
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.error('MongoDB connection error:', err));
+ 
 
 // Cấu hình chi tiết CORS
 const corsOptions = {
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5500'],
+    origin: ['http://localhost:5173', 'http://127.0.0.1:5500', corsWeb],
     optionsSuccessStatus: 200,
-};  
+};   
+// HELLO 
 
 // Middleware 
 // app.use(express.json());
@@ -28,11 +44,9 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 // Routes
 app.use('/api/users', userRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/categories', categoryRoutes);
 
 
 // Khởi động server
-app.listen(config.port, () => {
-    console.log(`Server is running on port ${config.port}`);
+app.listen(port,hostname, () => {
+    console.log(`Server is running on port ${port}`);
 });

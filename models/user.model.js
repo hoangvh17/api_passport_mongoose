@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    id: String,
+    ObjectId: String,
     fullname: String,
     birthdate: String,
     email: String,
@@ -16,7 +16,11 @@ const userSchema = new mongoose.Schema({
         area4: String,
         area5: String
     },
-    qrCodeBase64: String
+    qrCodeBase64: String,
+    admin: {
+        type: Boolean,
+        default: false
+    }
 });  
 
 module.exports = mongoose.model('User', userSchema);
