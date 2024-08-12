@@ -11,7 +11,7 @@ const dbUri = process.env.MONGODB_URI
 const port = process.env.PORT || 3001 
 const hostname = process.env.HOST_NAME || localhost; 
 const corsWeb = process.env.CORS_WEB
-// console.log(process.env);  
+// console.log(process.env.CORS_WEB);  
 
 
 require('dotenv').config(); 
@@ -26,11 +26,11 @@ require('dotenv').config();
 mongoose.connect(dbUri)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
- 
+  
 
 // Cấu hình chi tiết CORS
 const corsOptions = {
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5500', corsWeb],
+    origin: ['http://localhost:5173', 'http://127.0.0.1:5500', corsWeb].filter(Boolean),
     optionsSuccessStatus: 200,
 };   
 // HELLO 
