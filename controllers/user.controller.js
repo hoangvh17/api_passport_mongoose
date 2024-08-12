@@ -52,7 +52,7 @@ exports.loginUser = async (req, res) => {
         
         if (user.phoneNumber !== phoneNumber) {
             return res.status(401).json({ message: 'Not match Phone' });
-        }
+        } 
 
         // Chỉ gửi phản hồi một lần khi tất cả điều kiện đều đúng
         return res.status(201).json({ success: true, user });
