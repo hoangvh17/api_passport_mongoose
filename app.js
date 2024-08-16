@@ -45,6 +45,9 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 // Routes
 app.use('/api/users', userRoutes);
 
+app.get('/', async() =>{
+    res.status(200).json({message: "connected and hello"})
+})
 
 // Khởi động server
 app.listen(port,hostname, () => {
