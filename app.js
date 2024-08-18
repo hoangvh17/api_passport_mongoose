@@ -30,7 +30,7 @@ mongoose.connect(dbUri)
 
 // Cấu hình chi tiết CORS
 const corsOptions = {
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5500', corsWeb].filter(Boolean),
+    origin: ['http://localhost:5173', 'http://127.0.0.1:5500', 'https://itehcmc2024.suntoursgroup.asia', corsWeb].filter(Boolean),
     optionsSuccessStatus: 200,
 };   
 // HELLO 
