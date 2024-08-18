@@ -1,6 +1,0 @@
-[build]
-  command = "npm install && npm start"
-  publish = "public"
-
-[build.environment]
-  NODE_VERSION = "18"  # Hoặc phiên bản Node.js mà bạn sử dụng
