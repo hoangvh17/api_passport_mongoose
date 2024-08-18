@@ -9,11 +9,11 @@ const dbUri = process.env.MONGODB_URI
 // const dbUri = process.env.MONGODB_URI  && 'mongodb://localhost:27017/passport';
 
 const port = process.env.PORT || 3001 
-const hostname = process.env.HOST_NAME || localhost; 
+const hostname = process.env.HOST_NAME || 'localhost';
 const corsWeb = process.env.CORS_WEB
 // console.log(process.env.CORS_WEB);  
 
-
+console.log('CORS_WEB:', corsWeb);
 require('dotenv').config(); 
 
 
@@ -50,6 +50,6 @@ app.get('/', (req, res) => {
   });
 
 // Khởi động server
-app.listen(port,hostname, () => {
+app.listen(port, hostname, () => {
     console.log(`Server is running on port ${port}`);
 });
